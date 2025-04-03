@@ -1,4 +1,23 @@
 @import 'tailwindcss';
+@plugin 'daisyui';
+
+@theme {
+  --breakpoint-xs: 400px;
+  --color-accent: #5a6448;
+  --color-accent-light: #6b7755;
+  --color-primary: #dfdacb;
+  --color-primary-light: #f8f7f4;
+  --color-primary-dark: #b2aea2;
+  --color-secondary: #d9d1c8;
+  --color-secondary-light: #f4e9e1;
+  --color-secondary-dark: #c8bfb5;
+  --color-gray: #b8b3a3;
+  --color-gray-light: #ededec;
+  --color-gray-dark: #c3c0c0;
+  --color-black: #1c1c1c;
+  --color-white: #fcfcfc;
+  --color-gold: #d97706;
+}
 
 @font-face {
   font-family: 'Jost';

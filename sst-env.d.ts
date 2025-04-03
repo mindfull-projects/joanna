@@ -7,6 +7,7 @@ declare module 'sst' {
   export interface Resource {
     frontend: {
       type: 'sst.aws.Nextjs';
+      url: string;
     };
   }
 }
