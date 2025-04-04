@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import Link from 'next/link';
+import { FaHome as HomeIcon } from 'react-icons/fa';
 import { throttle } from 'lodash';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import menuItems from './menu-items';
 import MenuLink from './menu-link';
 import TogglerButton from './toggler-button';
+import VerticalDivider from './vertical-divider';
 
 interface HeaderProps {
   navbarOpen: boolean;
@@ -59,18 +60,17 @@ export default function Header({ navbarOpen, setNavbarOpen }: HeaderProps) {
   }, [setNavbarOpen]);
 
   const headerClass = classNames(
-    'h-[80px] fixed top-0 left-0 z-40 text-gray-light w-full flex items-center justify-between px-5 lg:px-16 shadow-custom-white',
+    'h-[80px] fixed top-0 left-0 z-40 w-full flex items-center gap-12 px-5 lg:px-16 justify-between flex-row-reverse lg:flex-row lg:justify-start',
     {
       'bg-transparent duration-300':
         pathname === '/' && isTransparent && !navbarOpen,
-      'bg-gray-dark duration-300':
+      'bg-primary duration-300':
         (pathname === '/' && !isTransparent) || navbarOpen,
-      'bg-gray-dark': pathname !== '/',
     }
   );
 
   const navClass = classNames(
-    'flex items-center absolute top-[100%] left-0 rounded-br-lg rounded-bl-lg z-50 w-full py-4 px-6 duration-300 bg-gray-dark lg:static lg:h-full lg:w-auto lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100',
+    'flex items-center absolute top-[100%] left-0 rounded-br-lg rounded-bl-lg z-50 w-full py-4 px-6 duration-300 bg-gray-dark lg:static lg:h-full lg:w-auto lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 bg-primary',
     {
       'opacity-0': !navbarOpen,
     }
@@ -79,21 +79,25 @@ export default function Header({ navbarOpen, setNavbarOpen }: HeaderProps) {
   return (
     <header className={headerClass}>
       {/* Logo */}
-      <Link href='/' className='relative h-[80px] w-[200px]'>
-        <Image src='/images/logo/mindfull-logo.svg' alt='logo' fill />
+      <Link href='/'>
+        <HomeIcon className='text-primary-content hover:text-accent fill-current text-2xl lg:text-lg' />
       </Link>
+      <VerticalDivider />
 
       {/* Navigation */}
-      <nav id='navbarCollapse' className={navClass} ref={navRef}>
+      <nav className={navClass} ref={navRef}>
         <ul className='flex h-full flex-col items-start gap-4 lg:flex-row lg:items-center lg:gap-8'>
-          {menuItems.map(menuItem => (
-            <li key={menuItem.id} className='relative flex h-full items-center'>
-              <MenuLink
-                menuItem={menuItem}
-                navbarOpen={navbarOpen}
-                onClick={() => setNavbarOpen(false)}
-              />
-            </li>
+          {menuItems.map((menuItem, index) => (
+            <Fragment key={menuItem.id}>
+              <li className='relative flex h-full items-center'>
+                <MenuLink
+                  menuItem={menuItem}
+                  navbarOpen={navbarOpen}
+                  onClick={() => setNavbarOpen(false)}
+                />
+              </li>
+              {index < menuItems.length - 1 && <VerticalDivider />}
+            </Fragment>
           ))}
         </ul>
       </nav>

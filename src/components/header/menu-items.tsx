@@ -7,8 +7,8 @@ export interface MenuItem {
 const menuData: MenuItem[] = [
   {
     id: 1,
-    title: 'Who am I',
-    path: '/who-am-i',
+    title: 'My Life',
+    path: '/my-life',
   },
   {
     id: 2,

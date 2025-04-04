@@ -20,20 +20,20 @@ export default function TogglerButton({
       }}
       id='navbarToggler'
       aria-label='Mobile Menu'
-      className='ring-primary -mr-1 rounded-sm p-2 focus:ring-2 lg:hidden'
+      className='ring-primary-content -mr-1 rounded-sm p-2 focus:ring-2 lg:hidden'
     >
       <span
-        className={`bg-primary relative my-1.5 block h-0.5 w-[30px] transition-all duration-300 ${
+        className={`bg-primary-content relative my-1.5 block h-0.5 w-[30px] transition-all duration-300 ${
           navbarOpen ? 'top-[7px] rotate-45' : ' '
         }`}
       />
       <span
-        className={`bg-primary relative my-1.5 block h-0.5 w-[30px] transition-all duration-300 ${
+        className={`bg-primary-content relative my-1.5 block h-0.5 w-[30px] transition-all duration-300 ${
           navbarOpen ? 'opacity-0' : ' '
         }`}
       />
       <span
-        className={`bg-primary relative my-1.5 block h-0.5 w-[30px] transition-all duration-300 ${
+        className={`bg-primary-content relative my-1.5 block h-0.5 w-[30px] transition-all duration-300 ${
           navbarOpen ? 'top-[-8px] -rotate-45' : ' '
         }`}
       />

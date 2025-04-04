@@ -1,3 +1,5 @@
 export default function VerticalDivider() {
-  return <div className='bg-accent w-[1px] flex-grow'></div>;
+  return (
+    <div className='bg-primary-content hidden h-[20px] w-[1px] lg:flex'></div>
+  );
 }
